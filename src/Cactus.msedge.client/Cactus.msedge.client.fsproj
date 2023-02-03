@@ -13,4 +13,7 @@
     <PackageReference Include="Bolero.HotReload" Version="0.*" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.*" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cactus.msedge.core\Cactus.msedge.core.fsproj" />
+  </ItemGroup>
 </Project>
