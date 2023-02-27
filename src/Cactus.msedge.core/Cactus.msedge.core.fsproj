@@ -5,4 +5,11 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include="assets\no-domain_no-network.txt" />
+    <Compile Include="MsEdgeUpdate.fs" />
+  </ItemGroup>
+
+  <ItemGroup />
+
 </Project>

@@ -9,7 +9,11 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Cactus.msedge.server", "src
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Cactus.msedge.client", "src\Cactus.msedge.client\Cactus.msedge.client.fsproj", "{1481BBD6-A6DA-4912-A03A-134880D14701}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Cactus.msedge.core", "src\Cactus.msedge.core\Cactus.msedge.core.fsproj", "{076621D2-F861-4F16-A3E2-996759C50562}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Cactus.msedge.core", "src\Cactus.msedge.core\Cactus.msedge.core.fsproj", "{076621D2-F861-4F16-A3E2-996759C50562}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1336FDDD-43B5-4013-AFC2-1527B45FB17A}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Cactus.msedge.core.sandbox", "test\Cactus.msedge.core.sandbox\Cactus.msedge.core.sandbox.fsproj", "{46F85451-E65E-4CE5-8601-DC5724A8A288}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,18 @@ Global
 		{076621D2-F861-4F16-A3E2-996759C50562}.Release|x64.Build.0 = Release|Any CPU
 		{076621D2-F861-4F16-A3E2-996759C50562}.Release|x86.ActiveCfg = Release|Any CPU
 		{076621D2-F861-4F16-A3E2-996759C50562}.Release|x86.Build.0 = Release|Any CPU
+		{46F85451-E65E-4CE5-8601-DC5724A8A288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46F85451-E65E-4CE5-8601-DC5724A8A288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46F85451-E65E-4CE5-8601-DC5724A8A288}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{46F85451-E65E-4CE5-8601-DC5724A8A288}.Debug|x64.Build.0 = Debug|Any CPU
+		{46F85451-E65E-4CE5-8601-DC5724A8A288}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{46F85451-E65E-4CE5-8601-DC5724A8A288}.Debug|x86.Build.0 = Debug|Any CPU
+		{46F85451-E65E-4CE5-8601-DC5724A8A288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46F85451-E65E-4CE5-8601-DC5724A8A288}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46F85451-E65E-4CE5-8601-DC5724A8A288}.Release|x64.ActiveCfg = Release|Any CPU
+		{46F85451-E65E-4CE5-8601-DC5724A8A288}.Release|x64.Build.0 = Release|Any CPU
+		{46F85451-E65E-4CE5-8601-DC5724A8A288}.Release|x86.ActiveCfg = Release|Any CPU
+		{46F85451-E65E-4CE5-8601-DC5724A8A288}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +81,7 @@ Global
 		{4E2AA925-4694-4593-ADBC-F349D269587A} = {87F6C079-CBD7-4866-BDEB-CBDEA9E51D2A}
 		{1481BBD6-A6DA-4912-A03A-134880D14701} = {87F6C079-CBD7-4866-BDEB-CBDEA9E51D2A}
 		{076621D2-F861-4F16-A3E2-996759C50562} = {87F6C079-CBD7-4866-BDEB-CBDEA9E51D2A}
+		{46F85451-E65E-4CE5-8601-DC5724A8A288} = {1336FDDD-43B5-4013-AFC2-1527B45FB17A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8CFD6033-FB8D-48BE-9628-9D83DC023CAB}
