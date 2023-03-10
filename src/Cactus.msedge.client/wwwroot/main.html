@@ -84,6 +84,14 @@
         </table>
       </template>
 
+      <template id="Upload">
+        <div class="content">
+          <!--<input type="file" accept=".log" />-->
+          ${InputNode}
+          <button onclick="${Submit}">Submit</button>
+</div>
+      </template>
+
       <template id="SignIn">
         <h1 class="title">Sign in</h1>
         <form onsubmit="${SignIn}">

@@ -1,19 +1,47 @@
 module Cactus.msedge.client.main
 
 open System
+open System.IO
+open System.Text
+open System.Buffers
+open System.Threading.Tasks
 open Elmish
 open Bolero
 open Bolero.Html
 open Bolero.Remoting
 open Bolero.Remoting.Client
 open Bolero.Templating.Client
+open Microsoft.AspNetCore.Components.Forms
+
+let mutable file: IBrowserFile = Unchecked.defaultof<_>
+
+let inputNode: Node = comp<InputFile> {
+  attr.callback "OnChange" (fun (e: InputFileChangeEventArgs) -> 
+    file <- e.File
+    e.File.Name|> printfn "%s"
+    e.File.ContentType|> printfn "%s"
+    ()) 
+  }
+
+let submit () =
+  task {
+    if file = Unchecked.defaultof<_>
+      then ()
+      else
+        use stream = file.OpenReadStream(25_600_000)
+        use reader = new StreamReader (stream, UnicodeEncoding.Unicode)
+        let! str = reader.ReadToEndAsync()
+        str |> printfn "%s"
+  }
+  // wasm ‚Å“¯Šú“I‚Éˆ—‚ð‚µ‚æ‚¤‚Æ‚·‚é‚ÆƒGƒ‰[‚É‚È‚é‚Ì‚Å’ˆÓ.
+  //|> Task.WaitAll
 
 /// Routing endpoints definition.
 type Page =
     | [<EndPoint "/">] Home
     | [<EndPoint "/counter">] Counter
     | [<EndPoint "/data">] Data
-    | [<EndPoint "/foo">] Foo
+    | [<EndPoint "/upload">] Upload
 
 /// The Elmish application's model.
 type Model =
@@ -91,6 +119,7 @@ type Message =
     | RecvSignOut
     | Error of exn
     | ClearError
+    | Submit
 
 let update remote message model =
     let onSignIn = function
@@ -136,6 +165,8 @@ let update remote message model =
         { model with error = Some exn.Message }, Cmd.none
     | ClearError ->
         { model with error = None }, Cmd.none
+    | Submit ->
+        { model with error = None }, Cmd.none
 
 /// Connects the routing system to the Elmish application.
 let router = Router.infer SetPage (fun model -> model.page)
@@ -144,6 +175,14 @@ type Main = Template<"wwwroot/main.html">
 
 let homePage model dispatch =
     Main.Home().Elt()
+
+let uploadPage model dispatch =
+    Main.Upload()
+      .Submit(fun _ ->
+        submit()
+        dispatch Submit)
+      .InputNode(inputNode)
+      .Elt()
 
 let counterPage model dispatch =
     Main.Counter()
@@ -199,7 +238,7 @@ let view model dispatch =
             menuItem model Home "Home"
             menuItem model Counter "Counter"
             menuItem model Data "Download data"
-            menuItem model Foo "Fooooooooo"
+            menuItem model Upload "Upload data"
         })
         .Body(
             cond model.page <| function
@@ -209,7 +248,7 @@ let view model dispatch =
                 cond model.signedInAs <| function
                 | Some username -> dataPage model username dispatch
                 | None -> signInPage model dispatch
-            | Foo -> homePage model dispatch
+            | Upload -> uploadPage model dispatch
         )
         .Error(
             cond model.error <| function
